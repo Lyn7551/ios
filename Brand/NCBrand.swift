@@ -9,7 +9,7 @@ let userAgent: String = {
     let appVersion: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     // Original Nextcloud useragent "Mozilla/5.0 (iOS) Nextcloud-iOS/\(appVersion)-Nextcloud"
     let suffixBrand = NCBrandOptions.shared.brandUserAgent.isEmpty ? "" : "-\(NCBrandOptions.shared.brandUserAgent)"
-    return "Mozilla/5.0 (iOS) Nextcloud-iOS/\(appVersion)\(suffixBrand)"
+    return "Mozilla/5.0 (iOS) SSICloud-iOS/\(appVersion)\(suffixBrand)"
 }()
 
  /*
@@ -61,9 +61,9 @@ struct NextcloudVersion: Comparable {
 final class NCBrandOptions: @unchecked Sendable {
     static let shared = NCBrandOptions()
 
-    var brand: String = "Nextcloud"
-    var brandUserAgent: String = ""
-    var textCopyrightNextcloudiOS: String = "Nextcloud Matheria for iOS %@ © 2026"
+    var brand: String = "SSI Cloud"
+    var brandUserAgent: String = "SSICloud"
+    var textCopyrightNextcloudiOS: String = "SSI Cloud for iOS %@ © 2026"
     var textCopyrightNextcloudServer: String = "Nextcloud Server %@"
     var loginBaseUrl: String = ""
     var pushNotificationServerProxy: String = ""
@@ -71,7 +71,7 @@ final class NCBrandOptions: @unchecked Sendable {
     var linkloginPreferredProviders: String = "https://nextcloud.com/signup-ios"
     var webLoginAutenticationProtocol: String = "nc://"                                        // example "abc://"
     var privacy: String = "https://nextcloud.com/privacy"
-    var sourceCode: String = "https://github.com/nextcloud/ios"
+    var sourceCode: String = "https://github.com/Lyn7551/ios"
     var mobileconfig: String = "/remote.php/dav/provisioning/apple-provisioning.mobileconfig"
     var appStoreUrl: String = "https://apps.apple.com/in/app/nextcloud/id1125420102"
 
@@ -94,12 +94,12 @@ final class NCBrandOptions: @unchecked Sendable {
     var disable_intro: Bool = false
     var disable_request_login_url: Bool = false
     var disable_multiaccount: Bool = false
-    var disable_more_external_site: Bool = false
+    var disable_more_external_site: Bool = true
     var disable_openin_file: Bool = false
     var disable_crash_service: Bool = false
     var disable_log: Bool = false
     var disable_mobileconfig: Bool = false  
-    var disable_show_more_nextcloud_apps_in_settings: Bool = false
+    var disable_show_more_nextcloud_apps_in_settings: Bool = true
     var disable_source_code_in_settings: Bool = false
     var enforce_passcode_lock = false
     var enforce_privacyScreenEnabled = false
@@ -178,7 +178,7 @@ final class NCBrandColor: @unchecked Sendable {
     static let shared = NCBrandColor()
 
     // This is rewrited from customet theme, default is Nextcloud color
-    let customer: UIColor = UIColor(red: 0.0 / 255.0, green: 130.0 / 255.0, blue: 201.0 / 255.0, alpha: 1.0) // Nextcloud default: #0082C9
+    let customer: UIColor = UIColor(red: 15.0 / 255.0, green: 118.0 / 255.0, blue: 110.0 / 255.0, alpha: 1.0) // SSI Cloud teal #0F766E
     var customerText: UIColor = .white
 
     // INTERNAL DEFINE COLORS

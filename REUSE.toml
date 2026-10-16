@@ -36,7 +36,7 @@ SPDX-FileCopyrightText = "2016-2026 Nextcloud GmbH and Nextcloud contributors"
 SPDX-License-Identifier = "GPL-3.0-or-later"
 
 [[annotations]]
-path = ["Animation.gif", "Nextcloud Hub.png", "Reasons to use Nextcloud.pdf", "widget.png"]
+path = ["Animation.gif", "Reasons to use Nextcloud.pdf", "widget.png"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2017-2023 Nextcloud GmbH and Nextcloud contributors"
 SPDX-License-Identifier = "GPL-3.0-or-later"

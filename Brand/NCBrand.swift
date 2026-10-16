@@ -105,7 +105,7 @@ final class NCBrandOptions: @unchecked Sendable {
     var enforce_privacyScreenEnabled = false
 
     // Example: (name: "Name 1", url: "https://cloud.nextcloud.com"),(name: "Name 2", url: "https://cloud.nextcloud.com")
-    var enforce_servers: [(name: String, url: String)] = []
+    var enforce_servers: [(name: String, url: String)] = [(name: "SSI Cloud", url: "http://172.19.126.65:30000")]
 
     // Internal option behaviour
     var cleanUpDay: Int = 0 // Set default "Delete all cached files older than". Possible days value are: 0, 1, 7, 30, 90, 180, 365
@@ -177,8 +177,13 @@ final class NCBrandOptions: @unchecked Sendable {
 final class NCBrandColor: @unchecked Sendable {
     static let shared = NCBrandColor()
 
-    // This is rewrited from customet theme, default is Nextcloud color
-    let customer: UIColor = UIColor(red: 15.0 / 255.0, green: 118.0 / 255.0, blue: 110.0 / 255.0, alpha: 1.0) // SSI Cloud teal #0F766E
+    // SSI Cloud teal: light #0F766E, dark #0B5C56
+    let customer: UIColor = UIColor(dynamicProvider: { traitCollection in
+        if traitCollection.userInterfaceStyle == .dark {
+            return UIColor(red: 11.0 / 255.0, green: 92.0 / 255.0, blue: 86.0 / 255.0, alpha: 1.0)
+        }
+        return UIColor(red: 15.0 / 255.0, green: 118.0 / 255.0, blue: 110.0 / 255.0, alpha: 1.0)
+    })
     var customerText: UIColor = .white
 
     // INTERNAL DEFINE COLORS

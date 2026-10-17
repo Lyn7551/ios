@@ -1,0 +1,78 @@
+# SPDX-FileCopyrightText: 2026 SSI Cloud (生生国际)
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# SSI Cloud 品牌截图（fork 专用）：构建后安装到模拟器并截取首启/登录页
+name: SSI iOS Screenshots
+
+on:
+  push:
+    branches: [ssi-brand]
+  workflow_dispatch:
+
+env:
+  PROJECT: Nextcloud.xcodeproj
+  DESTINATION: platform=iOS Simulator,name=iPhone 17,OS=27.0
+  SCHEME: Nextcloud
+  XCODE_VERSION: '27.1'
+  SIMULATOR_NAME: iPhone 17
+
+jobs:
+  screenshots:
+    name: Capture screenshots
+    runs-on: xcode-27
+
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Download GoogleService-Info.plist (mock)
+      run: wget "https://raw.githubusercontent.com/firebase/quickstart-ios/master/mock-GoogleService-Info.plist" -O GoogleService-Info.plist
+
+    - name: Setup Xcode
+      uses: maxim-lobanov/setup-xcode@ed7a3b1fda3918c0306d1b724322adc0b8cc0a90 # v1.7.0
+      with:
+        xcode-version: ${{ env.XCODE_VERSION }}
+
+    - name: Xcode Build
+      run: |
+        set -o pipefail && \
+        xcodebuild build \
+        -scheme "${{ env.SCHEME }}" \
+        -destination "${{ env.DESTINATION }}" \
+        -derivedDataPath "DerivedData" \
+        | xcbeautify --quieter
+
+    - name: Boot iOS Simulator
+      run: |
+        xcrun simctl boot "${{ env.SIMULATOR_NAME }}" || echo "Simulator already booted"
+        xcrun simctl bootstatus "${{ env.SIMULATOR_NAME }}" || echo "Simulator booted"
+
+    - name: Install and launch app
+      run: |
+        APP=$(find DerivedData/Build/Products -name "Nextcloud.app" -path "*iphonesimulator*" -maxdepth 3 | head -1)
+        echo "App bundle: $APP"
+        BUNDLE_ID=$(/usr/libexec/PlistBuddy -c "Print :CFBundleIdentifier" "$APP/Info.plist")
+        echo "Bundle ID: $BUNDLE_ID"
+        xcrun simctl install booted "$APP"
+        xcrun simctl launch booted "$BUNDLE_ID"
+        echo "BUNDLE_ID=$BUNDLE_ID" >> "$GITHUB_ENV"
+
+    - name: Capture screenshots
+      run: |
+        mkdir -p screenshots
+        sleep 8
+        xcrun simctl io booted screenshot screenshots/01-first-launch.png
+        sleep 8
+        xcrun simctl io booted screenshot screenshots/02-after-wait.png
+        xcrun simctl terminate booted "$BUNDLE_ID" || true
+        sleep 2
+        xcrun simctl launch booted "$BUNDLE_ID"
+        sleep 8
+        xcrun simctl io booted screenshot screenshots/03-relaunch.png
+
+    - name: Upload screenshots
+      uses: actions/upload-artifact@v7
+      if: ${{ !cancelled() }}
+      with:
+        name: ssi-ios-screenshots
+        path: screenshots/
+        retention-days: 14

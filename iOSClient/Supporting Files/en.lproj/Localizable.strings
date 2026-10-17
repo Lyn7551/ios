@@ -692,7 +692,7 @@
 "_input_"                        = "Input";
 "_output_"                       = "Output";
 "_task_details_"                 = "Task details";
-"_assistant_"                    = "Assistant";
+"_assistant_"                    = "SSI Assistant";
 "_new_task_"                     = "New %@ task";
 "_no_tasks_"                     = "Hello there! What can I help you with today?";
 "_create_task_subtitle_"         = "Use the + button to create a new task";

@@ -6726,7 +6726,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Brand/WidgetDashboardIntentHandler.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = WidgetDashboardIntentHandler;
+				INFOPLIST_KEY_CFBundleDisplayName = "SSI Cloud";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "";
@@ -6765,7 +6765,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Brand/WidgetDashboardIntentHandler.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = WidgetDashboardIntentHandler;
+				INFOPLIST_KEY_CFBundleDisplayName = "SSI Cloud";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "";
@@ -6949,7 +6949,7 @@
 					"$(BUILD_DIR)/../../../../../SourcePackages/checkouts/GRDB.swift/Sources/GRDBSQLite",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Brand/BackgroundUploadExtension.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = BackgroundUploadExtension;
+				INFOPLIST_KEY_CFBundleDisplayName = "SSI Cloud";
 				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7006,7 +7006,7 @@
 					"$(BUILD_DIR)/../../../../../SourcePackages/checkouts/GRDB.swift/Sources/GRDBSQLite",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Brand/BackgroundUploadExtension.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = BackgroundUploadExtension;
+				INFOPLIST_KEY_CFBundleDisplayName = "SSI Cloud";
 				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

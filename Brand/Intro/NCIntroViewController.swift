@@ -75,6 +75,11 @@ class NCIntroViewController: UIViewController, UICollectionViewDataSource, UICol
         buttonHost.setTitle(NSLocalizedString("_host_your_own_server", comment: ""), for: .normal)
         buttonHost.setTitleColor(textColor.withAlphaComponent(0.5), for: .normal)
 
+        if NCBrandOptions.shared.disable_intro_signup_links {
+            buttonSignUp.isHidden = true
+            buttonHost.isHidden = true
+        }
+
         introCollectionView.register(UINib(nibName: "NCIntroCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "introCell")
         introCollectionView.dataSource = self
         introCollectionView.delegate = self

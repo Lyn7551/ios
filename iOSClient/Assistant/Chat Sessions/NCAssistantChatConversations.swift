@@ -26,7 +26,7 @@ struct NCAssistantChatConversations: View {
                         Spacer()
                         if selectedConversation?.id == conversation.id {
                             Image(systemName: "checkmark")
-                                .foregroundStyle(.blue)
+                                .foregroundStyle(Color(NCBrandColor.shared.customer))
                         }
                     }
                     .contentShape(Rectangle())

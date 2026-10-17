@@ -140,7 +140,7 @@ struct NCViewerQuickLookView: UIViewControllerRepresentable {
             toolbarConfig.optionButtonFontSize = 16
             toolbarConfig.optionButtonFontSizeForPad = 21
             toolbarConfig.backgroundColor = .systemGray6
-            toolbarConfig.foregroundColor = .systemBlue
+            toolbarConfig.foregroundColor = NCBrandColor.shared.getElement(account: parent.model.session.account)
 
             var viewConfig = CropViewConfig()
             viewConfig.cropMaskVisualEffectType = .none

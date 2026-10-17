@@ -64,8 +64,8 @@ struct NCDirectEditorAdapter {
     private static func mobileWebEditorUserAgent() -> String {
         let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
         if UIDevice.current.userInterfaceIdiom == .pad {
-            return "Mozilla/5.0 (iPad) Nextcloud-iOS/\(appVersion)"
+            return "Mozilla/5.0 (iPad) SSICloud-iOS/\(appVersion)"
         }
-        return "Mozilla/5.0 (iPhone) Mobile Nextcloud-iOS/\(appVersion)"
+        return "Mozilla/5.0 (iPhone) Mobile SSICloud-iOS/\(appVersion)"
     }
 }

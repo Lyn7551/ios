@@ -36,7 +36,7 @@ SPDX-FileCopyrightText = "2016-2026 Nextcloud GmbH and Nextcloud contributors"
 SPDX-License-Identifier = "GPL-3.0-or-later"
 
 [[annotations]]
-path = ["Animation.gif", "Nextcloud Hub.png", "Reasons to use Nextcloud.pdf", "widget.png"]
+path = ["Animation.gif", "Reasons to use Nextcloud.pdf", "widget.png"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2017-2023 Nextcloud GmbH and Nextcloud contributors"
 SPDX-License-Identifier = "GPL-3.0-or-later"
@@ -60,6 +60,13 @@ path = ["AppIcon.icon/**", "Brand/Custom.xcassets/AppIcon.appiconset/**", "Brand
 precedence = "aggregate"
 SPDX-FileCopyrightText = "Nextcloud GmbH"
 SPDX-License-Identifier = "LicenseRef-NextcloudTrademarks"
+
+# SSI Cloud brand assets (fork-specific); not Nextcloud trademarks.
+[[annotations]]
+path = ["AppIcon.icon/Assets/ssicloud-mark-white.png", "Brand/Custom.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png", "Brand/Custom.xcassets/logo.imageset/*.png", "Brand/Custom.xcassets/intro1.imageset/intro1.png", "iOSClient/Images.xcassets/AccentColor.colorset/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 SSI Cloud"
+SPDX-License-Identifier = "GPL-3.0-or-later"
 
 [[annotations]]
 path = ["iOSClient/Utility/TOPasscodeViewController/**"]

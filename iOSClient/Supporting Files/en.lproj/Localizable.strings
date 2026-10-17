@@ -294,7 +294,7 @@
 "_today_"                                   = "Today";
 "_yesterday_"                               = "Yesterday";
 "_access_photo_not_enabled_"                = "Access to Photos is not enabled";
-"_access_photo_not_enabled_msg_"            = "Please go to Settings → Apps → Nextcloud → Photos and enable Photo Library Access";
+"_access_photo_not_enabled_msg_"            = "Please go to Settings → Apps → SSI Cloud → Photos and enable Photo Library Access";
 "_access_background_app_refresh_denied_"    = "\"Background App Refresh\" is denied. Please enable it in \"Settings\" otherwise, new photos or videos will not be detected when the application is in the background";
 "_tutorial_photo_view_"                     = "No photos or videos uploaded yet";
 "_error_createsubfolders_upload_"           = "Error creating subfolders";
@@ -482,10 +482,10 @@
 "_create_new_diagram_"              = "Diagram";
 "_more_documents_"                  = "More Documents";
 "_go_online_"                       = "Go online to see the document";
-"_intro_1_title_"                   = "Keep your data secure and under your control";
-"_intro_2_title_"                   = "Secure collaboration & file exchange";
-"_intro_3_title_"                   = "Easy-to-use web mail, calendaring & contacts";
-"_intro_4_title_"                   = "Screen sharing, online meetings & web conferences";
+"_intro_1_title_"                   = "Keep your files secure and under your control";
+"_intro_2_title_"                   = "Secure file sharing & team folders";
+"_intro_3_title_"                   = "Access your files from any device, anywhere";
+"_intro_4_title_"                   = "SSI Assistant — AI-powered help in your cloud";
 "_log_in_"                          = "Log in";
 "_sign_up_"                         = "Sign up with provider";
 "_host_your_own_server"             = "Host your own server";
@@ -692,7 +692,7 @@
 "_input_"                        = "Input";
 "_output_"                       = "Output";
 "_task_details_"                 = "Task details";
-"_assistant_"                    = "Assistant";
+"_assistant_"                    = "SSI Assistant";
 "_new_task_"                     = "New %@ task";
 "_no_tasks_"                     = "Hello there! What can I help you with today?";
 "_create_task_subtitle_"         = "Use the + button to create a new task";

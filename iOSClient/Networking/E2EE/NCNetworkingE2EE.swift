@@ -810,7 +810,7 @@ class NCNetworkingE2EE: NSObject {
         country: String = "DE",
         state: String = "Baden-Wuerttemberg",
         locality: String = "Stuttgart",
-        organization: String = "Nextcloud"
+        organization: String = "SSI Cloud"
     ) throws -> String {
         let privateKeyBIO: OpaquePointer? = privateKeyPEM.withCString { pointer in
             BIO_new_mem_buf(

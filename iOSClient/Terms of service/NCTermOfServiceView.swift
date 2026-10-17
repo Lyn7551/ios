@@ -53,7 +53,7 @@ struct NCTermOfServiceModelView: View {
                     .cappedFont(.body, maxDynamicType: .accessibility2)
                     .foregroundColor(.white)
                     .padding()
-                    .background(Color.blue)
+                    .background(Color(NCBrandColor.shared.customer))
                     .cornerRadius(10)
                     .padding(.bottom)
             }

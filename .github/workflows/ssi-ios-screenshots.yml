@@ -46,28 +46,52 @@ jobs:
         xcrun simctl boot "${{ env.SIMULATOR_NAME }}" || echo "Simulator already booted"
         xcrun simctl bootstatus "${{ env.SIMULATOR_NAME }}" || echo "Simulator booted"
 
-    - name: Install and launch app
+    - name: Install app
       run: |
         APP=$(find DerivedData/Build/Products -name "Nextcloud.app" -path "*iphonesimulator*" -maxdepth 3 | head -1)
         echo "App bundle: $APP"
         BUNDLE_ID=$(/usr/libexec/PlistBuddy -c "Print :CFBundleIdentifier" "$APP/Info.plist")
         echo "Bundle ID: $BUNDLE_ID"
         xcrun simctl install booted "$APP"
-        xcrun simctl launch booted "$BUNDLE_ID"
+        xcrun simctl get_app_container booted "$BUNDLE_ID" app
+        echo "APP=$APP" >> "$GITHUB_ENV"
         echo "BUNDLE_ID=$BUNDLE_ID" >> "$GITHUB_ENV"
 
-    - name: Capture screenshots
+    - name: Icon diagnostics
+      run: |
+        ASSETUTIL=$(xcrun --find assetutil)
+        echo "assetutil: $ASSETUTIL"
+        echo "== Assets.car AppIcon entries =="
+        "$ASSETUTIL" --info "$APP/Assets.car" | grep -i -B2 -A12 "AppIcon" || echo "no AppIcon entries in Assets.car"
+        echo "== .app root icon-related products =="
+        find "$APP" -maxdepth 1 | grep -i -E "icon|\.car" || echo "none"
+        echo "== embedded .icon bundles =="
+        find "$APP" -name "*.icon" || echo "no .icon bundles"
+
+    - name: Screenshot springboard
       run: |
         mkdir -p screenshots
-        sleep 8
-        xcrun simctl io booted screenshot screenshots/01-first-launch.png
-        sleep 8
-        xcrun simctl io booted screenshot screenshots/02-after-wait.png
+        sleep 3
+        xcrun simctl io booted screenshot screenshots/00-springboard.png
+
+    - name: Capture intro pages
+      run: |
+        xcrun simctl launch booted "$BUNDLE_ID"
+        sleep 2
+        for i in 1 2 3 4 5 6; do
+          xcrun simctl io booted screenshot "screenshots/intro-$i.png"
+          sleep 4.5
+        done
+
+    - name: Capture relaunch and permission dialog
+      run: |
         xcrun simctl terminate booted "$BUNDLE_ID" || true
         sleep 2
         xcrun simctl launch booted "$BUNDLE_ID"
-        sleep 8
-        xcrun simctl io booted screenshot screenshots/03-relaunch.png
+        sleep 6
+        xcrun simctl io booted screenshot screenshots/09-relaunch.png
+        sleep 6
+        xcrun simctl io booted screenshot screenshots/10-relaunch-2.png
 
     - name: Upload screenshots
       uses: actions/upload-artifact@v7

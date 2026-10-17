@@ -109,7 +109,8 @@ class NCDeepLinkHandler {
     }
 
     private func navigateAppUpdate() {
-        guard let url = URL(string: NCBrandOptions.shared.appStoreUrl) else { return }
+        guard !NCBrandOptions.shared.disable_appstore_link,
+              let url = URL(string: NCBrandOptions.shared.appStoreUrl) else { return }
         handleUrl(url: url)
     }
 

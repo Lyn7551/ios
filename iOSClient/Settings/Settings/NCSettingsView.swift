@@ -226,22 +226,24 @@ struct NCSettingsView: View {
                     NCAcknowledgementsView(browserTitle: NSLocalizedString("_acknowledgements_", comment: ""))
                 }
                 // Terms & Privacy Conditions
-                Button(action: {
-                    showBrowser.toggle()
-                }, label: {
-                    HStack {
-                        Image(systemName: "shield.checkerboard")
-                            .font(.icon())
-                            .foregroundColor(Color(NCBrandColor.shared.iconImageColor))
-                            .frame(width: 39)
+                if !NCBrandOptions.shared.disable_privacy_link {
+                    Button(action: {
+                        showBrowser.toggle()
+                    }, label: {
+                        HStack {
+                            Image(systemName: "shield.checkerboard")
+                                .font(.icon())
+                                .foregroundColor(Color(NCBrandColor.shared.iconImageColor))
+                                .frame(width: 39)
 
-                        Text(NSLocalizedString("_privacy_legal_", comment: ""))
-                            .font(.body)
+                            Text(NSLocalizedString("_privacy_legal_", comment: ""))
+                                .font(.body)
+                        }
+                    })
+                    .tint(Color(NCBrandColor.shared.textColor))
+                    .sheet(isPresented: $showBrowser) {
+                        NCBrowserWebView(urlBase: URL(string: NCBrandOptions.shared.privacy)!, browserTitle: NSLocalizedString("_privacy_legal_", comment: ""))
                     }
-                })
-                .tint(Color(NCBrandColor.shared.textColor))
-                .sheet(isPresented: $showBrowser) {
-                    NCBrowserWebView(urlBase: URL(string: NCBrandOptions.shared.privacy)!, browserTitle: NSLocalizedString("_privacy_legal_", comment: ""))
                 }
                 // Source Code Nextcloud App
                 if !NCBrandOptions.shared.disable_source_code_in_settings {

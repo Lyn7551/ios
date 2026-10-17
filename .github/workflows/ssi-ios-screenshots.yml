@@ -77,10 +77,13 @@ jobs:
     - name: Capture intro pages
       run: |
         xcrun simctl launch booted "$BUNDLE_ID"
-        sleep 2
-        for i in 1 2 3 4 5 6; do
+        sleep 2.8
+        xcrun simctl io booted screenshot "screenshots/intro-1.png"
+        sleep 1
+        xcrun simctl io booted screenshot "screenshots/intro-1-backup.png"
+        for i in 2 3 4 5; do
+          sleep 4.2
           xcrun simctl io booted screenshot "screenshots/intro-$i.png"
-          sleep 4.5
         done
 
     - name: Capture relaunch and permission dialog

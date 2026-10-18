@@ -60,6 +60,12 @@ class NCMainTabBarController: UITabBarController {
         tabBar.tintColor = NCBrandColor.shared.getElement(account: account)
 
         filesNavigationController = viewControllers?.first as? NCFilesNavigationController
+        if NCBrandOptions.shared.disable_activity_tab,
+           var controllers = viewControllers,
+           let activityIndex = controllers.firstIndex(where: { ($0 as? UINavigationController)?.viewControllers.first is NCActivity }) {
+            controllers.remove(at: activityIndex)
+            setViewControllers(controllers, animated: false)
+        }
         configureTabBarItems()
         configureTabBarAppearance()
         configureSidebarGesture()

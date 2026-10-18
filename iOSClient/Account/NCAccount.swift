@@ -4,6 +4,7 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 import NextcloudKit
 
 @MainActor
@@ -51,6 +52,8 @@ class NCAccount: NSObject {
         NextcloudKit.shared.updateSession(account: account, userId: userProfile.userId)
         NCSession.shared.appendSession(account: account, urlBase: urlBase, user: user, userId: userProfile.userId)
         await self.database.addAccountAsync(account, urlBase: urlBase, user: user, userId: userProfile.userId, password: password)
+
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { _, _ in }
 
         // FPE Domains
         try? await FileProviderDomain().ensureDomainRegistered(userId: userProfile.userId, user: "\(user)", urlBase: urlBase)

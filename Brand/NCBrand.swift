@@ -103,6 +103,7 @@ final class NCBrandOptions: @unchecked Sendable {
     var disable_intro_signup_links: Bool = true
     var disable_privacy_link: Bool = true
     var disable_appstore_link: Bool = true
+    var disable_activity_tab: Bool = true
     var disable_source_code_in_settings: Bool = false
     var enforce_passcode_lock = false
     var enforce_privacyScreenEnabled = false

@@ -19,7 +19,6 @@ class NCIntroViewController: UIViewController, UICollectionViewDataSource, UICol
     private let appDelegate = (UIApplication.shared.delegate as? AppDelegate)!
     private let titles = [NSLocalizedString("_intro_1_title_", comment: ""), NSLocalizedString("_intro_2_title_", comment: ""), NSLocalizedString("_intro_3_title_", comment: ""), NSLocalizedString("_intro_4_title_", comment: "")]
     private let images = [UIImage(named: "intro1"), UIImage(named: "intro2"), UIImage(named: "intro3"), UIImage(named: "intro4")]
-    private var timer: Timer?
     private var textColor: UIColor = .white
     private var textColorOpponent: UIColor = .black
     private var activeLoginProvider: NCLoginProvider?
@@ -58,9 +57,9 @@ class NCIntroViewController: UIViewController, UICollectionViewDataSource, UICol
         }
 
         pageControl.currentPageIndicatorTintColor = textColor
-        pageControl.pageIndicatorTintColor = .lightGray
+        pageControl.pageIndicatorTintColor = textColor.withAlphaComponent(0.6)
 
-        buttonLogin.layer.cornerRadius = 8
+        buttonLogin.layer.cornerRadius = 10
         buttonLogin.setTitleColor(NCBrandColor.shared.customer, for: .normal)
         buttonLogin.backgroundColor = textColor
         buttonLogin.setTitle(NSLocalizedString("_log_in_", comment: ""), for: .normal)
@@ -87,8 +86,6 @@ class NCIntroViewController: UIViewController, UICollectionViewDataSource, UICol
         pageControl.numberOfPages = self.titles.count
 
         view.backgroundColor = NCBrandColor.shared.customer
-
-        self.timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: (#selector(self.autoScroll(_:))), userInfo: nil, repeats: true)
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -99,13 +96,6 @@ class NCIntroViewController: UIViewController, UICollectionViewDataSource, UICol
         }
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        timer?.invalidate()
-        timer = nil
-    }
-
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
 
@@ -113,15 +103,6 @@ class NCIntroViewController: UIViewController, UICollectionViewDataSource, UICol
             self.pageControl?.currentPage = 0
             self.introCollectionView?.collectionViewLayout.invalidateLayout()
         }
-    }
-
-    @objc func autoScroll(_ sender: Any?) {
-        if pageControl.currentPage + 1 >= titles.count {
-            pageControl.currentPage = 0
-        } else {
-            pageControl.currentPage += 1
-        }
-        introCollectionView.scrollToItem(at: IndexPath(row: pageControl.currentPage, section: 0), at: .centeredHorizontally, animated: true)
     }
 
     func collectionView(_ collectionView: UICollectionView, targetContentOffsetForProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {
@@ -147,13 +128,7 @@ class NCIntroViewController: UIViewController, UICollectionViewDataSource, UICol
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: (#selector(autoScroll(_:))), userInfo: nil, repeats: true)
         pageControl.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
-    }
-
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        timer?.invalidate()
-        timer = nil
     }
 
     // MARK: - Action

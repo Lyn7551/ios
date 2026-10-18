@@ -36,12 +36,12 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="URL" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQd-pF-3cE">
-                                <rect key="frame" x="350" y="340" width="40" height="40"/>
+                                <rect key="frame" x="350" y="340" width="44" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration" identifier="submitServerAddress"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="3yh-bo-Bzr"/>
-                                    <constraint firstAttribute="width" constant="40" id="yLC-Ai-3Ob"/>
+                                    <constraint firstAttribute="height" constant="44" id="3yh-bo-Bzr"/>
+                                    <constraint firstAttribute="width" constant="44" id="yLC-Ai-3Ob"/>
                                 </constraints>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal">

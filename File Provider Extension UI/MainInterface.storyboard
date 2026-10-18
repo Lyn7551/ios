@@ -27,8 +27,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gV-2h-5zD">
-                                <rect key="frame" x="10" y="5" width="48" height="30"/>
+                                <rect key="frame" x="10" y="5" width="48" height="44"/>
                                 <accessibility key="accessibilityConfiguration" identifier="FPUInternalActionCancelButtonIdentifier"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="QiN-hy-44a"/>
+                                </constraints>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -38,7 +41,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zTo-CZ-ppy"/>
-                        <color key="backgroundColor" red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemTealColor"/>
                         <constraints>
                             <constraint firstItem="gdj-d0-nZ2" firstAttribute="leading" secondItem="zTo-CZ-ppy" secondAttribute="leading" constant="10" id="BRI-CF-hj6"/>
                             <constraint firstItem="kiS-ZU-Z4Y" firstAttribute="centerX" secondItem="zTo-CZ-ppy" secondAttribute="centerX" id="Itg-ba-qVK"/>

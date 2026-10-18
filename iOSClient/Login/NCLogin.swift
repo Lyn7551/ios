@@ -173,6 +173,15 @@ class NCLogin: UIViewController, UITextFieldDelegate, NCLoginQRCodeDelegate {
                 outgoing.font = UIFont.systemFont(ofSize: 13)
                 return outgoing
             }
+
+            if enforceServers.count == 1, let server = enforceServers.first {
+                enforceServersButton.setTitle(server.name, for: .normal)
+                baseUrlTextField.text = server.url
+                enforceServersButton.menu = nil
+                enforceServersButton.showsMenuAsPrimaryAction = false
+                enforceServersButton.isEnabled = false
+                enforceServersDropdownImage.isHidden = true
+            }
         }
 
         NCNetworking.shared.certificateDelegate = self

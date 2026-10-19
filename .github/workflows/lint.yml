@@ -11,6 +11,7 @@ on:
     branches:
       - master
       - develop
+      - ssi-brand
   pull_request:
     types: [synchronize, opened, reopened, ready_for_review]
     branches:
